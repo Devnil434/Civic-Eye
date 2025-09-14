@@ -1,0 +1,26 @@
+# Ignore Python files and dependencies from parent directory
+../requirements.txt
+../ml_service.py
+../__pycache__/
+../backend/
+../.env
+../.env.local
+../DEPLOYMENT.md
+../README.md
+../SECURITY.md
+../check-safety.ps1
+
+# Ignore any Python-related files in current directory
+requirements.txt
+ml_service.py
+__pycache__/
+*.py
+*.pyc
+
+# Ignore backend and other non-frontend directories
+backend/
+
+# Ignore deployment scripts
+*.ps1
+deploy*.js
+create-project.*

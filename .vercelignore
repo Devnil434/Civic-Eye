@@ -1,0 +1,22 @@
+# Ignore Python ML service files
+requirements.txt
+ml_service.py
+__pycache__/
+*.py
+*.pyc
+
+# Ignore backend directory
+backend/
+
+# Ignore documentation and scripts
+README.md
+SECURITY.md
+DEPLOYMENT.md
+check-safety.ps1
+*.ps1
+
+# Ignore git and environment files
+.gitignore
+.env
+.env.*
+!.env.example
