@@ -9,6 +9,16 @@ A comprehensive civic issue reporting system consisting of a web-based admin das
 - **Backend**: Express.js server with Supabase database
 - **ML Integration**: FastAPI service for automated report categorization
 
+📱 Minimalistic App Flow:
+
+Citizen: Opens mobile app → Takes photo → Submits report
+System: Auto-categorizes with ML → Creates report
+Admin: Views on dashboard → Updates status → Marks resolved
+Citizen: Gets status updates → Rates resolution
+
+That's it! Simple, functional, and ready to enhance later.
+
+
 ## 🏗️ Project Structure
 
 ```
@@ -392,5 +402,6 @@ For issues or questions:
 4. Contact development team
 
 ---
+
 
 **Janta Seva** - Empowering citizens through technology for better civic services.
