@@ -1,217 +1,396 @@
-# Janta Seva Admin Dashboard
+# Janta Seva - Civic Issue Reporting System
 
-A minimalistic Node.js + React admin dashboard for managing citizen reports in the Janta Seva system.
+A comprehensive civic issue reporting system consisting of a web-based admin dashboard and mobile app integration for citizen service management.
 
-## Project Structure
+## 📱 System Overview
+
+- **Admin Dashboard**: React-based web application for managing civic reports
+- **Mobile App Integration**: API endpoints for mobile app to submit and track reports
+- **Backend**: Express.js server with Supabase database
+- **ML Integration**: FastAPI service for automated report categorization
+
+## 🏗️ Project Structure
 
 ```
 Janta-Seva/
-├── backend/                 # Node.js Express API
+├── backend/                 # Express.js API server
 │   ├── src/
-│   │   ├── config/         # Configuration files
-│   │   │   └── supabase.js # Supabase client setup
-│   │   ├── controllers/    # Request handlers
-│   │   │   ├── reportsController.js
-│   │   │   └── departmentsController.js
+│   │   ├── config/         # Database configuration
+│   │   ├── controllers/    # Business logic
 │   │   ├── routes/         # API routes
-│   │   │   ├── reports.js
-│   │   │   └── departments.js
-│   │   └── server.js       # Express server entry point
-│   ├── package.json
-│   └── .env.example
+│   │   └── services/       # Helper services
+│   └── package.json
 ├── frontend/               # React admin dashboard
 │   ├── src/
 │   │   ├── components/     # Reusable components
-│   │   │   └── Layout.jsx
-│   │   ├── pages/          # Page components
-│   │   │   ├── Dashboard.jsx
-│   │   │   ├── Reports.jsx
-│   │   │   ├── MapView.jsx
-│   │   │   └── Departments.jsx
-│   │   ├── services/       # API services
-│   │   │   └── api.js
-│   │   ├── App.jsx
-│   │   ├── main.jsx
-│   │   └── index.css
-│   ├── public/
-│   ├── package.json
-│   ├── vite.config.js
-│   ├── tailwind.config.js
-│   └── .env.example
-└── README.md
+│   │   ├── pages/          # Dashboard pages
+│   │   └── services/       # API services
+│   └── package.json
+├── database/               # Database setup scripts
+│   └── setup-supabase.sql
+└── ml_service.py          # FastAPI ML categorization service
 ```
 
-## Features
-
-### Backend
-- **Express.js API** with CORS and security middleware
-- **Supabase integration** for database operations
-- **Reports management** - Create, read, verify, and forward reports
-- **Department management** - Manage government departments
-- **No authentication** (admin-only application)
-
-### Frontend
-- **React dashboard** with modern UI using Tailwind CSS
-- **Reports table** with filtering and verification controls
-- **Map view** using Leaflet for geographic visualization
-- **Department interface** for managing departments
-- **Responsive design** with sidebar navigation
-
-## Quick Start
+## 🚀 Quick Start
 
 ### Prerequisites
+
 - Node.js (v16 or higher)
-- npm or yarn
-- Supabase account and project
+- Python 3.8+ (for ML service)
+- Supabase account
+- Git
 
-### Backend Setup
+### 1. Clone Repository
 
-1. Navigate to backend directory:
-   ```bash
-   cd backend
-   ```
+```bash
+git clone <your-repository-url>
+cd Janta-Seva
+```
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+### 2. Database Setup
 
-3. Create environment file:
-   ```bash
-   cp .env.example .env
-   ```
+1. **Create Supabase Project:**
+   - Go to [supabase.com](https://supabase.com)
+   - Create new project
+   - Note your project URL and API key
 
-4. Configure environment variables in `.env`:
-   ```env
-   PORT=5000
-   NODE_ENV=development
-   SUPABASE_URL=your_supabase_project_url
-   SUPABASE_ANON_KEY=your_supabase_anon_key
-   ```
+2. **Run Database Script:**
+   - Open Supabase Dashboard → SQL Editor
+   - Copy content from `database/setup-supabase.sql`
+   - Execute the script to create tables and sample data
 
-5. Start development server:
-   ```bash
-   npm run dev
-   ```
+### 3. Backend Setup
 
-### Frontend Setup
+```bash
+# Navigate to backend directory
+cd backend
 
-1. Navigate to frontend directory:
-   ```bash
-   cd frontend
-   ```
+# Install dependencies
+npm install
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+# Create environment file
+cp .env.example .env
 
-3. Create environment file:
-   ```bash
-   cp .env.example .env
-   ```
+# Edit .env with your Supabase credentials
+# SUPABASE_URL=your_supabase_url
+# SUPABASE_ANON_KEY=your_supabase_anon_key
+# PORT=5003
 
-4. Configure environment variables in `.env`:
-   ```env
-   VITE_API_URL=http://localhost:5000/api
-   ```
+# Start development server
+npm run dev
+```
 
-5. Start development server:
-   ```bash
-   npm run dev
-   ```
+Backend will run on: `http://localhost:5003`
 
-### Database Schema
+### 4. Frontend Setup
 
-You'll need to create the following tables in Supabase:
+```bash
+# Navigate to frontend directory (new terminal)
+cd frontend
 
-#### Reports Table
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+Frontend will run on: `http://localhost:5173`
+
+### 5. ML Service Setup (Optional)
+
+```bash
+# Install Python dependencies
+pip install fastapi uvicorn pillow
+
+# Start ML service
+python ml_service.py
+```
+
+ML service will run on: `http://localhost:8001`
+
+## 📱 Mobile App Integration
+
+### API Endpoints for Mobile App
+
+#### Submit New Report
+```http
+POST http://localhost:5003/api/mobile/reports
+Content-Type: application/json
+
+{
+  "title": "Pothole on Main Street",
+  "description": "Large pothole causing traffic issues",
+  "category": "Infrastructure",
+  "location": "Main Road, Sector 15, New Delhi",
+  "latitude": 28.6139,
+  "longitude": 77.2090,
+  "reporter_name": "John Doe",
+  "reporter_phone": "+91-98765-43210",
+  "reporter_email": "john.doe@email.com"
+}
+```
+
+#### Check Report Status
+```http
+GET http://localhost:5003/api/mobile/reports/:id
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "data": {
+    "id": "report-id",
+    "title": "Report title",
+    "status": "pending",
+    "verified": true,
+    "created_at": "2025-01-14T10:30:00Z",
+    "updated_at": "2025-01-14T11:00:00Z",
+    "admin_notes": "Admin feedback",
+    "department": "Public Works Department"
+  }
+}
+```
+
+### Mobile App Implementation Guide
+
+#### 1. Report Submission Flow
+
+```javascript
+// Example mobile app function
+async function submitReport(reportData) {
+  try {
+    const response = await fetch('http://localhost:5003/api/mobile/reports', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(reportData)
+    });
+    
+    const result = await response.json();
+    if (result.id) {
+      // Store report ID for tracking
+      await AsyncStorage.setItem(`report_${result.id}`, JSON.stringify(result));
+      return result;
+    }
+  } catch (error) {
+    console.error('Failed to submit report:', error);
+    throw error;
+  }
+}
+```
+
+#### 2. Status Tracking
+
+```javascript
+// Check report status
+async function checkReportStatus(reportId) {
+  try {
+    const response = await fetch(`http://localhost:5003/api/mobile/reports/${reportId}`);
+    const result = await response.json();
+    
+    if (result.success) {
+      return result.data;
+    }
+  } catch (error) {
+    console.error('Failed to fetch status:', error);
+    throw error;
+  }
+}
+```
+
+#### 3. Location Services Integration
+
+```javascript
+// Get current location
+async function getCurrentLocation() {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        resolve({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        });
+      },
+      (error) => reject(error),
+      { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
+    );
+  });
+}
+```
+
+## 🔧 Configuration
+
+### Environment Variables
+
+#### Backend (.env)
+```env
+# Server Configuration
+PORT=5003
+NODE_ENV=development
+
+# Supabase Configuration
+SUPABASE_URL=https://ocxhfuzrggbrvtcihwkp.supabase.co
+SUPABASE_ANON_KEY=your_supabase_anon_key
+
+# Database Connection (for reference)
+DATABASE_URL=postgresql://postgres:password@db.supabase.co:5432/postgres
+```
+
+#### Frontend (.env)
+```env
+VITE_API_URL=http://localhost:5003/api
+VITE_ML_API_URL=http://localhost:8001
+```
+
+## 📊 Database Schema
+
+### Reports Table
 ```sql
 CREATE TABLE reports (
-  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  title VARCHAR NOT NULL,
+  id UUID PRIMARY KEY,
+  title VARCHAR(500) NOT NULL,
   description TEXT,
-  category VARCHAR,
-  location VARCHAR,
-  latitude DECIMAL,
-  longitude DECIMAL,
-  image_urls TEXT[],
-  reporter_name VARCHAR,
-  reporter_phone VARCHAR,
-  reporter_email VARCHAR,
-  status VARCHAR DEFAULT 'pending',
+  category VARCHAR(100),
+  location VARCHAR(500),
+  latitude DECIMAL(10, 8),
+  longitude DECIMAL(11, 8),
+  reporter_name VARCHAR(255),
+  reporter_phone VARCHAR(50),
+  reporter_email VARCHAR(255),
+  status VARCHAR(50) DEFAULT 'pending',
   verified BOOLEAN DEFAULT false,
   admin_notes TEXT,
   forwarding_notes TEXT,
-  department_id UUID REFERENCES departments(id),
+  rejection_reason TEXT,
+  department_id UUID,
   created_at TIMESTAMP DEFAULT NOW(),
-  updated_at TIMESTAMP DEFAULT NOW(),
-  verified_at TIMESTAMP,
-  forwarded_at TIMESTAMP
+  updated_at TIMESTAMP DEFAULT NOW()
 );
 ```
 
-#### Departments Table
+### Departments Table
 ```sql
 CREATE TABLE departments (
-  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  name VARCHAR NOT NULL,
+  id UUID PRIMARY KEY,
+  name VARCHAR(255) NOT NULL UNIQUE,
   description TEXT,
-  contact_email VARCHAR,
-  contact_phone VARCHAR,
-  head_name VARCHAR,
+  contact_email VARCHAR(255),
+  contact_phone VARCHAR(50),
+  head_name VARCHAR(255),
   created_at TIMESTAMP DEFAULT NOW()
 );
 ```
 
-## API Endpoints
+## 🎯 Features
 
-### Reports
-- `GET /api/reports` - Get all reports with filtering
-- `GET /api/reports/:id` - Get single report
-- `POST /api/reports` - Create new report (from mobile app)
-- `PUT /api/reports/:id/verify` - Verify/unverify a report
-- `PUT /api/reports/:id/forward` - Forward report to department
-- `PUT /api/reports/:id/status` - Update report status
+### Admin Dashboard
+- ✅ Report management with bulk actions
+- ✅ Department forwarding system
+- ✅ Status tracking and verification
+- ✅ Interactive map view with geolocation
+- ✅ Analytics and reporting
+- ✅ Dark mode support
+- ✅ Mobile-responsive design
 
-### Departments
-- `GET /api/departments` - Get all departments
-- `GET /api/departments/:id` - Get single department
-- `POST /api/departments` - Create new department
+### Mobile Integration
+- ✅ Report submission API
+- ✅ Status checking API
+- ✅ Location-based reporting
+- ✅ Image upload support
+- ✅ Real-time notifications
 
-### Health Check
-- `GET /api/health` - API health status
+### ML Integration
+- ✅ Automated report categorization
+- ✅ FastAPI service with confidence scoring
+- ✅ Category suggestions (pothole, streetlight, drainage, etc.)
 
-## Usage
+## 🔄 Development Workflow
 
-1. **Dashboard**: Overview of reports statistics and recent activity
-2. **Reports**: View, filter, verify, and forward citizen reports
-3. **Map View**: Geographic visualization of reports with status indicators
-4. **Departments**: Manage government departments for report forwarding
+### Running in Development
+```bash
+# Terminal 1: Backend
+cd backend && npm run dev
 
-## Development
+# Terminal 2: Frontend  
+cd frontend && npm run dev
 
-- Backend runs on `http://localhost:5000`
-- Frontend runs on `http://localhost:3000`
-- Hot reload enabled for both environments
+# Terminal 3: ML Service (optional)
+python ml_service.py
+```
 
-## Technologies Used
+### Testing API Endpoints
+```bash
+# Test backend health
+curl http://localhost:5003/api/health
 
-### Backend
-- Node.js
-- Express.js
-- Supabase
-- CORS, Helmet, Morgan middleware
+# Test mobile report submission
+curl -X POST http://localhost:5003/api/mobile/reports \
+  -H "Content-Type: application/json" \
+  -d '{"title":"Test Report","description":"Test"}'
+```
 
-### Frontend
-- React 18
-- Vite
-- Tailwind CSS
-- React Router
-- Axios
-- Leaflet (for maps)
-- Heroicons
+## 📱 Mobile App Requirements
 
-## License
+### Recommended Tech Stack
+- **React Native** or **Flutter** for cross-platform development
+- **Location Services** for GPS coordinates
+- **Camera Integration** for photo capture
+- **Push Notifications** for status updates
+- **Offline Storage** for draft reports
 
-This project is licensed under the ISC License.
+### Key Features to Implement
+1. **Report Submission Form**
+   - Title, description, category selection
+   - Photo capture/upload
+   - Location detection
+   - Contact information
+
+2. **Report Tracking**
+   - List of submitted reports
+   - Status indicators
+   - Admin feedback display
+   - Timeline view
+
+3. **Notifications**
+   - Status change alerts
+   - Admin responses
+   - Department updates
+
+## 🔐 Security Considerations
+
+- Input validation on all endpoints
+- Rate limiting for API calls
+- Image upload size restrictions
+- SQL injection prevention
+- XSS protection
+
+## 🚀 Deployment
+
+### Backend Deployment
+```bash
+# Build and deploy to your preferred platform
+npm run build
+# Deploy to Heroku, AWS, or similar
+```
+
+### Frontend Deployment
+```bash
+# Build for production
+npm run build
+# Deploy to Vercel, Netlify, or similar
+```
+
+## 📞 Support
+
+For issues or questions:
+1. Check existing GitHub issues
+2. Review API documentation
+3. Test endpoints with provided examples
+4. Contact development team
+
+---
+
+**Janta Seva** - Empowering citizens through technology for better civic services.

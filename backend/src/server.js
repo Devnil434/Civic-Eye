@@ -7,6 +7,7 @@ const morgan = require('morgan');
 // Import routes
 const reportsRoutes = require('./routes/reports');
 const departmentsRoutes = require('./routes/departments');
+const mobileRoutes = require('./routes/mobile');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -21,6 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 app.use('/api/reports', reportsRoutes);
 app.use('/api/departments', departmentsRoutes);
+app.use('/api/mobile', mobileRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
