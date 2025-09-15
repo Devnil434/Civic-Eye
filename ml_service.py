@@ -23,15 +23,15 @@ logger = logging.getLogger(__name__)
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Startup
-    logger.info("Janta Seva ML Service starting up...")
+    logger.info("Civic-Eye ML Service starting up...")
     logger.info(f"Model loaded with {len(model.categories)} categories")
     logger.info("Service ready to accept requests")
     yield
     # Shutdown
-    logger.info("Janta Seva ML Service shutting down...")
+    logger.info("Civic-Eye ML Service shutting down...")
 
 app = FastAPI(
-    title="Janta Seva ML Service", 
+    title="Civic-Eye ML Service", 
     version="1.0.0",
     lifespan=lifespan
 )
@@ -151,7 +151,7 @@ model = MockMLModel()
 
 @app.get("/")
 async def root():
-    return {"message": "Janta Seva ML Service is running", "version": "1.0.0"}
+    return {"message": "Civic-Eye ML Service is running", "version": "1.0.0"}
 
 @app.get("/health")
 async def health_check():
@@ -282,7 +282,7 @@ async def global_exception_handler(request, exc):
     )
 
 if __name__ == "__main__":
-    print("Starting Janta Seva ML Service...")
+    print("Starting Civic-Eye ML Service...")
     print("API Documentation: http://localhost:8001/docs")
     print("Health Check: http://localhost:8001/health")
     print("Categories: http://localhost:8001/categories")

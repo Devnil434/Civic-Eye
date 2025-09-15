@@ -1,7 +1,7 @@
 {
-  "name": "janta-seva-frontend",
+  "name": "civic-eye-frontend",
   "version": "1.0.0",
-  "description": "Admin dashboard frontend for Janta Seva",
+  "description": "Admin dashboard frontend for Civic-Eye",
   "private": true,
   "type": "module",
   "scripts": {

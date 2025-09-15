@@ -1,7 +1,7 @@
 {
-  "name": "janta-seva-backend",
+  "name": "civic-eye-backend",
   "version": "1.0.0",
-  "description": "Admin dashboard backend for Janta Seva",
+  "description": "Admin dashboard backend for Civic-Eye",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",

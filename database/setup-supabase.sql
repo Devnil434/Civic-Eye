@@ -1,4 +1,4 @@
--- Janta Seva Database Setup Script for Supabase
+-- Civic-Eye Database Setup Script for Supabase
 -- Copy and paste this ENTIRE script into Supabase SQL Editor
 -- Make sure to run it as a single query
 

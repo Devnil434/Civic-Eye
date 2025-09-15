@@ -153,7 +153,7 @@ const Layout = ({ children }) => {
                 <h1 className="text-lg font-bold">Government of Jharkhand</h1>
                 <p className={`text-sm transition-colors duration-200 ${
                   darkMode ? 'text-gray-300' : 'text-blue-200'
-                }`}>Janta Seva System</p>
+                }`}>Civic-Eye System</p>
               </div>
             </div>
           </div>
@@ -215,7 +215,7 @@ const Layout = ({ children }) => {
                 <h1 className={`text-xl font-semibold transition-colors duration-200 ${
                   darkMode ? 'text-white' : 'text-gray-900'
                 }`}>
-                  | Janta Seva Admin Dashboard
+                  | Civic-Eye Admin Dashboard
                 </h1>
               </div>
               <div className="flex items-center space-x-2 relative">

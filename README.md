@@ -1,4 +1,4 @@
-# Janta Seva - Civic Issue Reporting System
+# Civic-Eye - Civic Issue Reporting System
 
 A comprehensive civic issue reporting system consisting of a web-based admin dashboard and mobile app integration for citizen service management.
 
@@ -22,7 +22,7 @@ That's it! Simple, functional, and ready to enhance later.
 ## 🏗️ Project Structure
 
 ```
-Janta-Seva/
+Civic-Eye/
 ├── backend/                 # Express.js API server
 │   ├── src/
 │   │   ├── config/         # Database configuration
@@ -404,4 +404,4 @@ For issues or questions:
 ---
 
 
-**Janta Seva** - Empowering citizens through technology for better civic services.
+**Civic-Eye** - Empowering citizens through technology for better civic services.
