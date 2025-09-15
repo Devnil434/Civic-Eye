@@ -147,13 +147,15 @@ const Layout = ({ children }) => {
           <div className="text-white">
             <div className="flex items-center mb-1">
               <div className="w-8 h-8 bg-white rounded-md flex items-center justify-center mr-3">
-                <span className="text-blue-600 font-bold text-lg">🏢</span>
+                <span className="text-blue-600 font-bold text-lg">🏛️</span>
               </div>
-              <h1 className="text-lg font-bold">Admin Panel</h1>
+              <div>
+                <h1 className="text-lg font-bold">Government of Jharkhand</h1>
+                <p className={`text-sm transition-colors duration-200 ${
+                  darkMode ? 'text-gray-300' : 'text-blue-200'
+                }`}>Janta Seva System</p>
+              </div>
             </div>
-            <p className={`text-sm transition-colors duration-200 ${
-              darkMode ? 'text-gray-300' : 'text-blue-200'
-            }`}>Janta Seva System</p>
           </div>
         </div>
         <nav className="mt-6 px-3">
@@ -199,9 +201,23 @@ const Layout = ({ children }) => {
         }`}>
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="flex h-16 items-center justify-between">
-              <h1 className={`text-xl font-semibold transition-colors duration-200 ${
-                darkMode ? 'text-white' : 'text-gray-900'
-              }`}>Janta Seva Admin Dashboard</h1>
+              <div className="flex items-center">
+                <div className="flex items-center mr-4">
+                  <div className="w-8 h-8 bg-blue-600 rounded-md flex items-center justify-center mr-2">
+                    <span className="text-white font-bold text-sm">🏛️</span>
+                  </div>
+                  <span className={`font-bold transition-colors duration-200 ${
+                    darkMode ? 'text-white' : 'text-gray-900'
+                  }`}>
+                    Government of Jharkhand
+                  </span>
+                </div>
+                <h1 className={`text-xl font-semibold transition-colors duration-200 ${
+                  darkMode ? 'text-white' : 'text-gray-900'
+                }`}>
+                  | Janta Seva Admin Dashboard
+                </h1>
+              </div>
               <div className="flex items-center space-x-2 relative">
                 {/* Theme Toggle Button */}
                 <button 

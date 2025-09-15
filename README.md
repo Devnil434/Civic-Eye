@@ -335,7 +335,7 @@ curl -X POST http://localhost:5003/api/mobile/reports \
 ## 📱 Mobile App Requirements
 
 ### Recommended Tech Stack
-- **React Native** or **Flutter** for cross-platform development
+- **Kotlin** for mobile app development
 - **Location Services** for GPS coordinates
 - **Camera Integration** for photo capture
 - **Push Notifications** for status updates
