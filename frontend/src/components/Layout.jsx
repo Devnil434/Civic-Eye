@@ -147,7 +147,7 @@ const Layout = ({ children }) => {
           <div className="text-white">
             <div className="flex items-center mb-1">
               <div className="w-8 h-8 bg-white rounded-md flex items-center justify-center mr-3">
-                <span className="text-blue-600 font-bold text-lg">🏛️</span>
+                <img src="/logo2.png" alt="Logo" className="w-6 h-6 object-contain" />
               </div>
               <div>
                 <h1 className="text-lg font-bold">Government of Jharkhand</h1>
@@ -204,7 +204,7 @@ const Layout = ({ children }) => {
               <div className="flex items-center">
                 <div className="flex items-center mr-4">
                   <div className="w-8 h-8 bg-blue-600 rounded-md flex items-center justify-center mr-2">
-                    <span className="text-white font-bold text-sm">🏛️</span>
+                    <img src="/logo2.png" alt="Logo" className="w-6 h-6 object-contain" />
                   </div>
                   <span className={`font-bold transition-colors duration-200 ${
                     darkMode ? 'text-white' : 'text-gray-900'

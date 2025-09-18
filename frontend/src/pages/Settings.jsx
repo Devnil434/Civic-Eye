@@ -383,7 +383,7 @@ const Settings = () => {
       {/* Version Info */}
       <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 transition-colors duration-200">
         <div className="text-center text-sm text-gray-600 dark:text-gray-400">
-          Version 1.0.0 | Janta Seva Admin System
+          Version 1.0.0 | Civic-Eye Admin System
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@
   "outputDirectory": "dist",
   "installCommand": "npm install",
   "env": {
-    "VITE_API_URL": "https://janta-seva-backend.herokuapp.com/api",
+    "VITE_API_URL": "https://civic-eye-backend.herokuapp.com/api",
     "VITE_ML_API_URL": "https://your-ml-service-url.com"
   },
   "rewrites": [

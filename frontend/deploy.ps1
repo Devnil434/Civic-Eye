@@ -1,5 +1,5 @@
 # PowerShell script to deploy to Vercel with custom project name
-Write-Host "Deploying Janta Seva Admin Dashboard..." -ForegroundColor Green
+Write-Host "Deploying Civic-Eye Admin Dashboard..." -ForegroundColor Green
 
 # Remove existing .vercel directory if it exists
 if (Test-Path ".vercel") {
