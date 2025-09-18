@@ -54,7 +54,7 @@ Civic-Eye/
 
 ```bash
 git clone <your-repository-url>
-cd Janta-Seva
+cd Civic-Eye
 ```
 
 ### 2. Database Setup

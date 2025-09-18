@@ -1,4 +1,4 @@
-# Janta Seva - Production Deployment Guide
+# Civic-Eye - Production Deployment Guide
 
 ## Prerequisites
 - Git repository set up
@@ -16,7 +16,7 @@
 ### Using Command Line:
 ```bash
 # 1. Navigate to project root
-cd /path/to/Janta-Seva
+cd /path/to/Civic-Eye
 
 # 2. Install Heroku CLI (if not installed)
 # Download from: https://devcenter.heroku.com/articles/heroku-cli
@@ -25,7 +25,7 @@ cd /path/to/Janta-Seva
 heroku login
 
 # 4. Create Heroku app
-heroku create janta-seva-backend
+heroku create civic-eye-backend
 
 # 5. Set production environment variables
 heroku config:set NODE_ENV=production
@@ -37,7 +37,7 @@ git add .
 git commit -m "Prepare backend for deployment"
 
 # 7. Create Heroku remote (if not exists)
-heroku git:remote -a janta-seva-backend
+heroku git:remote -a civic-eye-backend
 
 # 8. Deploy backend
 git subtree push --prefix=backend heroku main
@@ -46,13 +46,13 @@ cd backend
 git init
 git add .
 git commit -m "Initial backend deployment"
-heroku git:remote -a janta-seva-backend
+heroku git:remote -a civic-eye-backend
 git push heroku main
 ```
 
 ### Using Heroku Dashboard:
 1. Go to heroku.com → New → Create new app
-2. Name: `janta-seva-backend`
+2. Name: `civic-eye-backend`
 3. Connect to GitHub repository
 4. Set Config Vars in Settings:
    - NODE_ENV: production
@@ -60,7 +60,7 @@ git push heroku main
    - SUPABASE_ANON_KEY: your_actual_key
 5. Deploy from main branch
 
-**Backend URL:** `https://janta-seva-backend.herokuapp.com`
+**Backend URL:** `https://civic-eye-backend.herokuapp.com`
 
 ## 🌐 Step 3: Frontend Deployment (Vercel)
 
@@ -76,14 +76,14 @@ npm install -g vercel
 vercel login
 
 # 4. Update environment variables in .env.production
-# VITE_API_URL=https://janta-seva-backend.herokuapp.com/api
+# VITE_API_URL=https://civic-eye-backend.herokuapp.com/api
 
 # 5. Deploy to Vercel
 vercel --prod
 
 # 6. Follow prompts:
 # - Link to existing project? N
-# - What's your project's name? janta-seva-frontend
+# - What's your project's name? civic-eye-frontend
 # - In which directory is your code located? ./
 ```
 
@@ -92,21 +92,21 @@ vercel --prod
 2. Connect GitHub repository
 3. Select frontend folder as root directory
 4. Set Environment Variables:
-   - VITE_API_URL: https://janta-seva-backend.herokuapp.com/api
+   - VITE_API_URL: https://civic-eye-backend.herokuapp.com/api
    - VITE_ML_API_URL: your-ml-service-url
 5. Deploy
 
-**Frontend URL:** `https://janta-seva-frontend.vercel.app`
+**Frontend URL:** `https://civic-eye-frontend.vercel.app`
 
 ## ✅ Step 4: Verification
 
 ### Test Backend:
 ```bash
 # Health check
-curl https://janta-seva-backend.herokuapp.com/api/health
+curl https://civic-eye-backend.herokuapp.com/api/health
 
 # Test mobile API
-curl -X POST https://janta-seva-backend.herokuapp.com/api/mobile/reports \
+curl -X POST https://civic-eye-backend.herokuapp.com/api/mobile/reports \
   -H "Content-Type: application/json" \
   -d '{"title":"Test Report","description":"Test deployment"}'
 ```
@@ -122,7 +122,7 @@ curl -X POST https://janta-seva-backend.herokuapp.com/api/mobile/reports \
 Update your mobile app configuration:
 ```javascript
 // Mobile app config
-const API_BASE_URL = 'https://janta-seva-backend.herokuapp.com/api';
+const API_BASE_URL = 'https://civic-eye-backend.herokuapp.com/api';
 
 // Submit report
 fetch(`${API_BASE_URL}/mobile/reports`, { ... });
@@ -185,4 +185,4 @@ fetch(`${API_BASE_URL}/mobile/reports/${id}`, { ... });
 
 ---
 
-**Your Janta Seva system is now live and ready for mobile app integration!** 🎉
+**Your Civic-Eye system is now live and ready for mobile app integration!** 🎉

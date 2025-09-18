@@ -1,7 +1,7 @@
-# ML Integration Guide for Janta Seva
+# ML Integration Guide for Civic-Eye
 
 ## Overview
-This guide explains how to integrate your own trained ML model with the Janta Seva admin dashboard for automatic report categorization.
+This guide explains how to integrate your own trained ML model with the Civic-Eye admin dashboard for automatic report categorization.
 
 ## Quick Start
 
