@@ -2,6 +2,8 @@
 
 A comprehensive civic issue reporting system consisting of a web-based admin dashboard and mobile app integration for citizen service management.
 
+## 📱 Link- https://janata-seva-admin-panel.vercel.app/
+
 ## 📱 System Overview
 
 - **Admin Dashboard**: React-based web application for managing civic reports
@@ -405,3 +407,4 @@ For issues or questions:
 
 
 **Civic-Eye** - Empowering citizens through technology for better civic services.
+
